@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Width on Scroll</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div style="margin-top: 100vh;">
+        <div style="width: 100%; display: flex; margin-bottom: 300vh; height: 200vh;position: relative;overflow: hidden; ">
+            <div style="width: 50%; position: relative;">
+                <div id="myDiv1"></div>
+            </div>
+            <div style="width: 50%;">
+                <div id="myDiv2"></div>
+            </div>
+            <!-- <div style="position: relative;"> -->
+            <div style="position: absolute;top: 500px; left: 50%;margin-left: 50px;">
+                <div id="myDiv3"></div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <script>
+        const myDiv1 = document.getElementById('myDiv1');
+
+        window.addEventListener('scroll', function () {
+            let scrollPercentage = ((window.scrollY - 400) / (document.documentElement.scrollHeight - window.innerHeight));
+            let newWidth = 1 + scrollPercentage * 2500; // Change the '2' to adjust the scaling factor
+            myDiv1.style.width = `${newWidth}px`;
+        });
+
+        const myDiv2 = document.getElementById('myDiv2');
+
+        window.addEventListener('scroll', function () {
+            let scrollPercentage = ((window.scrollY - 500) / (document.documentElement.scrollHeight - window.innerHeight));
+            let newHeight = 1 + scrollPercentage * 2500; // Change the '2' to adjust the scaling factor
+            myDiv2.style.height = `${newHeight}px`; // Update height instead of width
+        });
+
+        const myDiv3 = document.getElementById('myDiv3');
+
+        window.addEventListener('scroll', function () {
+            let scrollPercentage = ((window.scrollY - 1000) / (document.documentElement.scrollHeight - window.innerHeight));
+            let newWidth = 1 + scrollPercentage * 5000; // Change the '2' to adjust the scaling factor
+            myDiv3.style.width = `${newWidth}px`;
+        });
+
+
+    </script>
+    <style>
+        #myDiv1 {
+            margin-right: 50px;
+            position: absolute;
+            right: 0;
+            margin-top: 400px;
+            background-color: #000000;
+            width: 2px;
+            height: 4px;
+            /* padding: 20px; */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #myDiv2 {
+            margin-top: 400px;
+            background-color: #000000;
+            width: 4px;
+            height: 10px;
+            /* Initial height */
+            /* padding: 20px; */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #myDiv3 {
+            margin-top: 400px;
+            background-color: #000000;
+            width: 2px;
+            height: 4px;
+            /* padding: 20px; */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+    </style>
+</body>
+
+</html>
